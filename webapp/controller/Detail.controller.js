@@ -30,7 +30,7 @@ sap.ui.define([
             this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
 
             this.setModel(oViewModel, "detailView");
-            
+
             this.getOwnerComponent().getModel().setUseBatch(false);
 
             this.getOwnerComponent().getModel().metadataLoaded().then(this._onMetadataLoaded.bind(this));
@@ -48,6 +48,11 @@ sap.ui.define([
         onSendEmailPress: function () {
             var oViewModel = this.getModel("detailView");
             var sUrl = "www.sap.com";
+            var oEmailDate = new Date();
+            var oEmailDateFormat = sap.ui.core.format.DateFormat.getDateTimeInstance({ pattern: "YYYY-MM-ddTHH:mm"});
+
+            var formattedDate = oEmailDateFormat.format(oEmailDate);
+            console.log(formattedDate);
 
             URLHelper.triggerEmail(
                 null,
